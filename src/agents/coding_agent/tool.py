@@ -8,7 +8,7 @@ from langchain.agents import Tool
 import os
 from typing import List
 
-BASE_DIR = Path("~/synthra")
+BASE_DIR = Path("/home/sanyam/synthra/projects")
 BASE_DIR.mkdir(exist_ok=True)
 
 params = {
