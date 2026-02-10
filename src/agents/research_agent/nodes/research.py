@@ -1,5 +1,5 @@
 from langchain_tavily import TavilySearch
-from core.state import AgentState
+from src.agents.research_agent.core.state import AgentState
 from rich.console import Console
 import time
 

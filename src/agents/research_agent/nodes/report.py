@@ -1,5 +1,5 @@
 from fpdf import FPDF
-from core.state import AgentState
+from src.agents.research_agent.core.state import AgentState
 import os
 from rich.text import Text
 from rich.console import Console

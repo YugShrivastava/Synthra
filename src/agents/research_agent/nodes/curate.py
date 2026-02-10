@@ -1,4 +1,4 @@
-from core.state import AgentState
+from src.agents.research_agent.core.state import AgentState
 from langchain_google_genai import ChatGoogleGenerativeAI
 from rich.console import Console
 

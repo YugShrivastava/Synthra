@@ -1,9 +1,9 @@
 from langgraph.graph import StateGraph,END
 from langgraph.graph.state import CompiledStateGraph
-from core.state import AgentState
-from nodes.curate import curate_node
-from nodes.report import pdf_node
-from nodes.research import research_node
+from src.agents.research_agent.core.state import AgentState
+from src.agents.research_agent.nodes.curate import curate_node
+from src.agents.research_agent.nodes.report import pdf_node
+from src.agents.research_agent.nodes.research import research_node
 
 def research_workflow() -> CompiledStateGraph:
     workflow = StateGraph(AgentState)
