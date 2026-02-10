@@ -1,5 +1,5 @@
 from src.model.model import llm
-from src.agents.supervisor_agent.tool import delegate_to_coding_agent
+from src.agents.supervisor_agent.tool import delegate_to_coding_agent, interact
 from langchain_core.messages import HumanMessage
 from src.agents.coding_agent.agent import coding_agent
 from langgraph_supervisor import create_supervisor
@@ -9,8 +9,10 @@ supervisor_agent = create_supervisor(
     [coding_agent],
     model=llm,
     tools=[
-        delegate_to_coding_agent
+        delegate_to_coding_agent,
+        interact
     ]
+
 )
 
 supervisor_agent = supervisor_agent.compile()

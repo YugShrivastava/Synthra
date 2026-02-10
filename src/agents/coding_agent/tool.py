@@ -8,7 +8,7 @@ from langchain.agents import Tool
 import os
 from typing import List
 
-BASE_DIR = Path("/home/vanshdubey/synthra/projects")
+BASE_DIR = Path("~/synthra")
 BASE_DIR.mkdir(exist_ok=True)
 
 params = {
@@ -17,7 +17,6 @@ params = {
     "hl": "en"
 }
 
-serpapi = SerpAPIWrapper(params=params)
 
 def _project_dir(project_id: str) -> Path:
     return BASE_DIR / project_id
@@ -164,10 +163,5 @@ def archive_project(project_id: str) -> str:
     shutil.make_archive(str(archive_path.with_suffix('')), 'zip', base)
     return f"✅ ARCHIVED project '{project_id}': {archive_path}"
 
-search_tool = Tool(
-    name="web-search",
-    description="Gets the latest information for packages , libraries , dependencies for development purposes",
-    func=serpapi.run
-)
 
 tools = [run_shell, write_files , archive_project, list_files, list_files_tool, read_file_tool]
