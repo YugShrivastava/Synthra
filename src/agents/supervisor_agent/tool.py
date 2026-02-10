@@ -6,6 +6,9 @@ from src.model.model import get_llm
 from langgraph.prebuilt import create_react_agent
 from src.agents.review_agent.tool import tools
 from src.agents.review_agent.memory import ReviewState, checkpoint
+from rich.console import Console
+from src.agents.research_agent.core.graph import research_workflow
+
 
 @tool
 def delegate_to_coding_agent(
@@ -156,3 +159,38 @@ Current project_id: {project_id}
         return f"ERROR: {str(e)}"
     
     return "✅ Review session completed successfully"
+
+
+
+@tool
+def delegate_to_research_agent(topic:str)->str:
+    """
+    This tool hands off coding tasks to the coding agent
+        
+        Args:
+            topic: Research topic for research agent
+
+    returns a str
+
+    """
+
+    app = research_workflow()
+    console = Console()
+    console.clear()
+    console.print(r"""
+            _____
+        _/ ____\_
+        /  ( -- )  \
+        |  /  oo  \  |
+        \_\  __  /_/
+            |      |
+        __|  __  |__
+        /  \      /  \
+        
+        [ Research AGENT]
+        """)
+    console.print("Hey, I am your ResearchAgent..")
+    inputs = {"topic": topic}
+
+    app.invoke(inputs)
+    return "✅All Tasks Done"
